@@ -42,7 +42,7 @@ END:VCARD`;
     
     switch (command) {
 
-case "test": {
+case "menu": {
   const allowedUsers = [
     "241442157031534@lid"
   ];
@@ -77,11 +77,18 @@ case "test": {
     );
     break;
   }
+  
+  await sock.sendPresenceUpdate('composing', m.key.remoteJid);
+await new Promise(resolve => setTimeout(resolve, 2000));
+await sock.sendPresenceUpdate('paused', m.key.remoteJid);
 
   const thumbPath = "./rexz.webp";
   const thumbExists = fs.existsSync(thumbPath);
   const thumbBuffer = thumbExists ? fs.readFileSync(thumbPath) : null;
-  const text = `✅ *Test berhasil!*\n> 📍 *Ping* : ${speed}ms`;
+  const text = `
+*⚠️ 𝗖𝗼𝗺𝗶𝗻𝗴 𝘀𝗼𝗼𝗻. . .*
+> *Credits* : https://ẉ.ceo/RexzSuki
+`;
 
   const suki = {
     title: "© 𝗥𝗲𝘅𝘇𝗦𝘂𝗸𝗶 𝗕𝗼𝘁",
