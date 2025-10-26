@@ -50,6 +50,9 @@ case "test": {
   const sender = m.key.participant || m.key.remoteJid;
   const userCommand = command || "unknown";
   const userTime = new Date().toLocaleTimeString("id-ID", { hour12: false });
+  const start = Date.now();
+  const end = Date.now();
+  const speed = end - start;
 
   console.log(
     chalk.white("\n") + "┏╾" + "<💭>" +
@@ -78,7 +81,7 @@ case "test": {
   const thumbPath = "./rexz.webp";
   const thumbExists = fs.existsSync(thumbPath);
   const thumbBuffer = thumbExists ? fs.readFileSync(thumbPath) : null;
-  const text = "✅ *Test berhasil!*";
+  const text = "✅ *Test berhasil!*\n> 📍 *Ping* : ${speed}ms"
 
   const suki = {
     title: "© 𝗥𝗲𝘅𝘇𝗦𝘂𝗸𝗶 𝗕𝗼𝘁",
