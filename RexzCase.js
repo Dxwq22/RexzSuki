@@ -81,7 +81,7 @@ case "test": {
   const thumbPath = "./rexz.webp";
   const thumbExists = fs.existsSync(thumbPath);
   const thumbBuffer = thumbExists ? fs.readFileSync(thumbPath) : null;
-  const text = "✅ *Test berhasil!*\n> 📍 *Ping* : ${speed}ms"
+  const text = `✅ *Test berhasil!*\n> 📍 *Ping* : ${speed}ms`;
 
   const suki = {
     title: "© 𝗥𝗲𝘅𝘇𝗦𝘂𝗸𝗶 𝗕𝗼𝘁",
