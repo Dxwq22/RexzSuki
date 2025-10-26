@@ -8,7 +8,7 @@ import baileys, {
 import pino from "pino";
 import chalk from "chalk";
 import readline from "readline";
-import handleMessage from "./RexzCase.js";
+import handleMessage from "./々RexzSuki/RexzCase.js";
 import fs from "fs";
 
 const logger = pino({ level: "silent" });
