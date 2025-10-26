@@ -82,7 +82,7 @@ case "menu": {
 await new Promise(resolve => setTimeout(resolve, 2000));
 await sock.sendPresenceUpdate('paused', m.key.remoteJid);
 
-  const thumbPath = "https://files.catbox.moe/sn3kau.webp";
+  const thumbPath = "./々RexzSuki/rexz.webp";
   const thumbExists = fs.existsSync(thumbPath);
   const thumbBuffer = thumbExists ? fs.readFileSync(thumbPath) : null;
   const text = `
@@ -131,7 +131,7 @@ await sock.sendPresenceUpdate('paused', m.key.remoteJid);
 
   await sock.sendMessage(m.key.remoteJid, { react: { text: "✅", key: m.key } });
 
-  const audioPath = "https://files.catbox.moe/fyd6ka.opus";
+  const audioPath = "./々RexzSuki/rexz.opus";
   if (fs.existsSync(audioPath)) {
     const audioBuffer = fs.readFileSync(audioPath);
     await sock.sendMessage(
