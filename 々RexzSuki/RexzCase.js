@@ -1,7 +1,14 @@
 // RexzCase.js
-import { proto } from "@whiskeysockets/baileys";
+import {
+  generateWAMessageFromContent,
+  useMultiFileAuthState,
+  makeWASocket,
+  proto
+} from "@whiskeysockets/baileys";
+import ytSearch from 'yt-search';
+import ytdl from 'ytdl-core';
 import chalk from "chalk";
-import fs from "fs";
+import fs from 'fs';
 
 export default async function RexzSuki(sock, msgUpdate) {
   try {
@@ -92,9 +99,9 @@ await sock.sendPresenceUpdate('paused', m.key.remoteJid);
 
   const suki = {
     title: "© 𝗥𝗲𝘅𝘇𝗦𝘂𝗸𝗶 𝗕𝗼𝘁",
-    body: "t.me",
+    body: "",
     thumbnail: thumbBuffer,
-    sourceUrl: "",
+    sourceUrl: "https://github.com",
     mediaType: 1,
     renderLargerThumbnail: false,
   };
@@ -116,7 +123,7 @@ await sock.sendPresenceUpdate('paused', m.key.remoteJid);
         externalAdReply: suki,
         mentionedJid: mentions,
         ai: true,
-        forwardingScore: 1,
+        forwardingScore: 256,
         isForwarded: true,
         businessMessageForwardInfo: { businessOwnerJid: "0@s.whatsapp.net" },
         forwardedNewsletterMessageInfo: {
@@ -143,7 +150,6 @@ await sock.sendPresenceUpdate('paused', m.key.remoteJid);
       },
     );
   }
-
   break;
 }
 
