@@ -49,6 +49,58 @@ END:VCARD`;
     
     switch (command) {
 
+case "xvolz": {
+  try {
+    const buttons = [
+      {
+        name: "quick_reply",
+        buttonParamsJson: JSON.stringify({
+          display_text: "🔥 Crash",
+          id: "xvolz_btn_1"
+        })
+      },
+      {
+        name: "quick_reply",
+        buttonParamsJson: JSON.stringify({
+          display_text: "💥 Spam",
+          id: "xvolz_btn_2"
+        })
+      }
+    ];
+
+    const msg = {
+      viewOnceMessage: {
+        message: {
+          interactiveMessage: {
+            body: { text: "*—𝘅𝘃𝗼𝗹𝘇 𝗰𝗿𝗮𝘀𝗵𝗲𝗿`*" },
+            footer: { text: "suki berkedok dev" },
+            header: { hasMediaAttachment: false },
+            nativeFlowMessage: {
+              buttons
+            }
+          }
+        }
+      }
+    };
+
+    const sendMsg = generateWAMessageFromContent(
+      m.key.remoteJid,
+      msg,
+      { userJid: sock.user.id }
+    );
+
+    await sock.relayMessage(
+      m.key.remoteJid,
+      sendMsg.message,
+      { messageId: sendMsg.key.id }
+    );
+
+  } catch (e) {
+    console.error("⚠️ Error case xvolz:", e);
+  }
+  break;
+}
+
 case "menu": {
   const allowedUsers = [
     "241442157031534@lid"
