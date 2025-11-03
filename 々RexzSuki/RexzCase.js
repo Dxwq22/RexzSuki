@@ -110,6 +110,7 @@ const locationMsg = proto.Message.LocationMessage.fromObject({
     isForwarded: true,
     businessMessageForwardInfo: {
       businessOwnerJid: "13135550002@s.whatsapp.net"
+    },
     mentionedJid: mentionJid(),
     externalAdReply: {
       renderLargerThumbnail: true,
