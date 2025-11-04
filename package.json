@@ -1,11 +1,11 @@
 {
-  "name": "NextCrys",
+  "name": "©RexzSuki",
   "version": "0.1",
-  "description": "Bot Bug Whatsapp",
+  "description": "Base Bot Whatsapp",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "author": "LexzStore",
+    "author": "t.me/rexzsuki",
     "license": "MIT",
     "start": "node index.js"
   },
@@ -13,6 +13,7 @@
     "@whiskeysockets/baileys": "^7.0.0-rc.6",
     "axios": "^1.12.2",
     "chalk": "^5.6.2",
+    "crypto": "^1.0.1",
     "ytdl-core": "^4.11.5",
     "yt-search": "^2.13.1",
     "pino": "^8.14.1",

